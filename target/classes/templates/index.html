@@ -11,6 +11,8 @@
     <title>chatroom</title>
 </head>
 <body>
+<span id="username" th:utext="${username}"></span>
+<a th:href="@{/logout}">Logout</a>
 <div id="connecting">Подключение...</div>
 <ul id="messageArea">
 </ul>

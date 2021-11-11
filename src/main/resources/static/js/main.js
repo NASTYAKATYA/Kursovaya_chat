@@ -32,7 +32,10 @@ function sendMessage(event) {
     var messageContent = messageInput.value.trim();
     if(messageContent && stompClient) {
         var chatMessage = {
+            timestamp: new Date(),
+            sender: username,
             content: messageInput.value
+
         };
 
         stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
@@ -44,12 +47,22 @@ function sendMessage(event) {
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
 
+
+
     var messageElement = document.createElement('li');
 
     messageElement.classList.add('chat-message');
 
-    var textElement = document.createElement('span');
+
+    // var usernameElement = document.createElement('strong');
+    // usernameElement.classList.add('nickname');
+    // var usernameText = document.createTextNode(message.sender);
+    // usernameElement.appendChild(usernameText);
+    // messageElement.appendChild(usernameElement);
+    // var textElement = document.createElement('span');
+
     var messageText = document.createTextNode(message.content);
+
     textElement.appendChild(messageText);
 
     messageElement.appendChild(textElement);
