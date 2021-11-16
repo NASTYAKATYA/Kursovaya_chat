@@ -1,0 +1,150 @@
+*{
+    box-sizing:border-box;
+}
+body{
+    background-color:#abd9e9;
+    font-family:Arial;
+}
+h2,h3{
+    margin:0;
+}
+.main-container{
+    width:750px;
+    height:800px;
+    background:#eff3f7;
+    margin:0 auto;
+    font-size:0;
+    border-radius:5px;
+    overflow:hidden;
+}
+.chat-container{
+    width:100%;
+    height:800px;
+    display:inline-block;
+    font-size:15px;
+    vertical-align:top;
+    background-color: #eff3f7;
+}
+.header{
+    height:95px;
+    padding:30px 20px 30px 50px;
+}
+.header h2{
+    font-size:16px;
+    margin-bottom:5px;
+}
+.header a{
+    font-size:14px;
+    font-weight:normal;
+    color:#7e818a;
+}
+.status{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:7px;
+}
+.mr0-ml7{
+    margin-right:0;
+    margin-left:7px;
+}
+.green{
+    background-color:#58b666;
+}
+.orange{
+    background-color:#ff725d;
+}
+.light-blue{
+    background-color:#6fbced;
+}
+.dark-blue{
+    background-color:#1f99e0;
+}
+#chat{
+    padding-left:0;
+    margin:0;
+    list-style-type:none;
+    overflow-y:scroll;
+    height:535px;
+    border-top:2px solid #abd9e9;
+    border-bottom:2px solid #abd9e9;
+}
+#chat li{
+    padding:10px 30px;
+}
+#chat h2,#chat h3{
+    display:inline-block;
+    font-size:13px;
+    font-weight:normal;
+}
+#chat h3{
+    color:#bbb;
+}
+#chat .info{
+    margin-bottom:5px;
+}
+#chat .message{
+    padding:20px;
+    color:#fff;
+    line-height:25px;
+    max-width:90%;
+    display:inline-block;
+    text-align:left;
+    border-radius:5px;
+}
+#chat .me{
+    text-align:right;
+}
+#chat .triangle{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+}
+.transparent-green{
+    border-color: transparent transparent #58b666 transparent;
+}
+.transparent-orange{
+    border-color: transparent transparent #ff725d transparent;
+}
+.transparent-light-blue{
+    border-color: transparent transparent #6fbced transparent;
+}
+.transparent-dark-blue{
+    border-color: transparent transparent #1f99e0 transparent;
+}
+#chat .other .triangle{
+    margin-left:15px;
+}
+#chat .me .triangle{
+    margin-left:640px;
+}
+.send-message{
+    height:155px;
+    padding:20px 30px 10px 20px;
+}
+.send-message textarea{
+    resize:none;
+    border:none;
+    display:block;
+    width:100%;
+    height:80px;
+    border-radius:3px;
+    padding:20px;
+    font-size:13px;
+    margin-bottom:13px;
+}
+.send-message textarea::placeholder{
+    color:#ddd;
+}
+.send-message a{
+    text-decoration:none;
+    text-transform:uppercase;
+    font-weight:bold;
+    color:#6fbced;
+    vertical-align:top;
+    margin-left:585px;
+    margin-top:5px;
+    display:inline-block;
+}

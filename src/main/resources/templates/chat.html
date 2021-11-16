@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
+    <title>Вход</title>
+</head>
+<body>
+<div class="main-container">
+    <div class="chat-container">
+        <div class="header">
+            <h2>Имя пользователя: <span id="username" th:text="${username}">username</span></h2>
+            <a id="logout" href="/logout">Выйти</a>
+        </div>
+        <ul id="chat">
+            <li class="me">
+                <div class="info">
+                    <h3>10:12AM, Today</h3>
+                    <h2>Vincent</h2>
+                    <span class="status green mr0-ml7"></span>
+                </div>
+                <div class="triangle transparent-green"></div>
+                <div class="message green">
+                    Присоединился к чату
+                </div>
+            </li>
+            <li class="other">
+                <div class="info">
+                    <span class="status green"></span>
+                    <h2>Vincent</h2>
+                    <h3>10:12AM, Today</h3>
+                </div>
+                <div class="triangle transparent-green"></div>
+                <div class="message green">
+                    Присоединился к чату
+                </div>
+            </li>
+            <li class="other">
+                <div class="info">
+                    <span class="status dark-blue"></span>
+                    <h2>Vincent</h2>
+                    <h3>10:12AM, Today</h3>
+                </div>
+                <div class="triangle transparent-dark-blue"></div>
+                <div class="message dark-blue">
+                    Привет
+                </div>
+            </li>
+            <li class="me">
+                <div class="info">
+                    <h3>10:12AM, Today</h3>
+                    <h2>Vincent</h2>
+                    <span class="status light-blue mr0-ml7"></span>
+                </div>
+                <div class="triangle transparent-light-blue"></div>
+                <div class="message light-blue">
+                    Привет!
+                </div>
+            </li>
+            <li class="other">
+                <div class="info">
+                    <span class="status dark-blue"></span>
+                    <h2>Vincent</h2>
+                    <h3>10:12AM, Today</h3>
+                </div>
+                <div class="triangle transparent-dark-blue"></div>
+                <div class="message dark-blue">
+                    Пока
+                </div>
+            </li>
+            <li class="other">
+                <div class="info">
+                    <span class="status orange"></span>
+                    <h2>Vincent</h2>
+                    <h3>10:12AM, Today</h3>
+                </div>
+                <div class="triangle transparent-orange"></div>
+                <div class="message orange">
+                    Отключился от чата
+                </div>
+            </li>
+        </ul>
+        <div class="send-message">
+            <textarea placeholder="Введите сообщение"></textarea>
+            <a href="#">Отправить</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

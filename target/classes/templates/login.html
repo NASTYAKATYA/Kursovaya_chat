@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
-    <link rel="stylesheet" href="/css/main.css" />
+    <title>Вход</title>
 </head>
 <body>
-<div id="login-container">
-    <h1 class="title">Введите имя пользователя</h1>
-    <form id="loginForm" name="loginForm" method="POST">
-        <input type="text" name="username" />
-        <button type="submit">Войти</button>
-    </form>
+<div th:if="${status} == 'wrong_login_or_password'">
+    Неправильный логин или пароль
 </div>
+<form method="POST">
+    <input type="text" name="username" placeholder="Логин">
+    <input type="text" name="password" placeholder="Пароль">
+    <input type="submit" value="Войти">
+</form>
+<a href="/signup">Зарегистрироваться</a>
 </body>
 </html>
