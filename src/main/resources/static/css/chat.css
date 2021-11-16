@@ -1,12 +1,20 @@
 *{
     box-sizing:border-box;
 }
+.dnone{
+    display: none;
+}
 body{
     background-color:#abd9e9;
     font-family:Arial;
 }
 h2,h3{
     margin:0;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 .main-container{
     width:750px;
@@ -138,8 +146,9 @@ h2,h3{
 .send-message textarea::placeholder{
     color:#ddd;
 }
-.send-message a{
+.send-message input{
     text-decoration:none;
+    border-style: none;
     text-transform:uppercase;
     font-weight:bold;
     color:#6fbced;
@@ -147,4 +156,5 @@ h2,h3{
     margin-left:585px;
     margin-top:5px;
     display:inline-block;
+    cursor: pointer;
 }

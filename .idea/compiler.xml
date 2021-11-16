@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Kursovaya_chat-main" />
         <module name="chat" />
+        <module name="Kursovaya_chat" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Kursovaya_chat" options="-parameters" />
       <module name="Kursovaya_chat-main" options="-parameters" />
       <module name="chat" options="-parameters" />
     </option>

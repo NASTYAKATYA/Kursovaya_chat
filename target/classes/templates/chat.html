@@ -4,87 +4,28 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
     <title>Вход</title>
+    <!-- https://cdnjs.com/libraries/sockjs-client -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <!-- https://cdnjs.com/libraries/stomp.js/ -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
 <div class="main-container">
     <div class="chat-container">
         <div class="header">
-            <h2>Имя пользователя: <span id="username" th:text="${username}">username</span></h2>
+            <h2 style="float: right" id="status">Подключение...</h2>
+            <h2 style="float: left">Имя пользователя: <span id="username" th:text="${username}">username</span></h2>
+            <div class="clearfix"></div>
             <a id="logout" href="/logout">Выйти</a>
         </div>
         <ul id="chat">
-            <li class="me">
-                <div class="info">
-                    <h3>10:12AM, Today</h3>
-                    <h2>Vincent</h2>
-                    <span class="status green mr0-ml7"></span>
-                </div>
-                <div class="triangle transparent-green"></div>
-                <div class="message green">
-                    Присоединился к чату
-                </div>
-            </li>
-            <li class="other">
-                <div class="info">
-                    <span class="status green"></span>
-                    <h2>Vincent</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle transparent-green"></div>
-                <div class="message green">
-                    Присоединился к чату
-                </div>
-            </li>
-            <li class="other">
-                <div class="info">
-                    <span class="status dark-blue"></span>
-                    <h2>Vincent</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle transparent-dark-blue"></div>
-                <div class="message dark-blue">
-                    Привет
-                </div>
-            </li>
-            <li class="me">
-                <div class="info">
-                    <h3>10:12AM, Today</h3>
-                    <h2>Vincent</h2>
-                    <span class="status light-blue mr0-ml7"></span>
-                </div>
-                <div class="triangle transparent-light-blue"></div>
-                <div class="message light-blue">
-                    Привет!
-                </div>
-            </li>
-            <li class="other">
-                <div class="info">
-                    <span class="status dark-blue"></span>
-                    <h2>Vincent</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle transparent-dark-blue"></div>
-                <div class="message dark-blue">
-                    Пока
-                </div>
-            </li>
-            <li class="other">
-                <div class="info">
-                    <span class="status orange"></span>
-                    <h2>Vincent</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle transparent-orange"></div>
-                <div class="message orange">
-                    Отключился от чата
-                </div>
-            </li>
         </ul>
-        <div class="send-message">
-            <textarea placeholder="Введите сообщение"></textarea>
-            <a href="#">Отправить</a>
-        </div>
+        <form class="send-message" id="sendMessageForm">
+            <textarea placeholder="Введите сообщение" id="messageInput" name="content"></textarea>
+            <input type="submit"/>
+        </form>
     </div>
 </div>
+<script th:src="@{/js/chat.js}"></script>
 </body>
 </html>
