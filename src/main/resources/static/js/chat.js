@@ -16,7 +16,7 @@ connect();
 
 function onConnected() {
     stompClient.subscribe('/topic/chat', onMessageReceived);
-    stompClient.send("/app/chat.addUser",
+    stompClient.send("/app/chat.sendMessage",
         {},
         JSON.stringify({username: username, type: 'JOIN'})
     )
@@ -96,7 +96,9 @@ function onMessageReceived(payload) {
             contentElement.classList.add('dark-blue');
         }
     }
-    infoElementTime.innerText = '10:12AM, Today';
+    var messageTime  = new Date(message.date);
+    var timeOptions = { hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'long', day: 'numeric' };
+    infoElementTime.innerText = messageTime.toLocaleDateString("ru-RU", timeOptions);
     infoElementUsername.innerText = message.username;
     contentElement.innerText = message.content;
     if (message.username == username) {
