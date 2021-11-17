@@ -16,7 +16,7 @@ connect();
 
 function onConnected() {
     stompClient.subscribe('/topic/chat', onMessageReceived);
-    stompClient.send("/app/chat.sendMessage",
+    stompClient.send("/app/chat.addUser",
         {},
         JSON.stringify({username: username, type: 'JOIN'})
     )
