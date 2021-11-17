@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/authorization.css}">
 </head>
 <body>
-<div th:if="${status} == 'wrong_login_or_password'">
-    Неправильный логин или пароль
+<div class="main-container">
+    <form method="POST">
+        <input type="text" name="username" placeholder="Имя пользователя" class="text-box">
+        <input type="text" name="password" placeholder="Пароль" class="text-box">
+        <input type="submit" value="Войти" class="input-button">
+        <a href="/signup">Перейти на страницу регистрации</a>
+        <div class="error" th:if="${status} == 'wrong_login_or_password'">Неправильный логин или пароль</div>
+    </form>
 </div>
-<form method="POST">
-    <input type="text" name="username" placeholder="Логин">
-    <input type="text" name="password" placeholder="Пароль">
-    <input type="submit" value="Войти">
-</form>
-<a href="/signup">Зарегистрироваться</a>
 </body>
 </html>
