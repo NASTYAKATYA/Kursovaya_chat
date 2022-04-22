@@ -11,15 +11,30 @@ import ru.mirea.chat.model.MessageModel;
 
 import java.util.Date;
 
+/**
+ * Данный класс отслеживает все события в чате
+ * @author Бирюкова Екатерина
+ */
 @Component
 public class WebSocketEventListener {
+    /**
+     * Класс операций по отправке сообщений адресату
+     */
     private final SimpMessageSendingOperations messagingTemplate;
 
+    /**
+     * Конструктор класса
+     * @param messagingTemplate Объект, представляющий шаблон для сообщения
+     */
     @Autowired
     public WebSocketEventListener(SimpMessageSendingOperations messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
     }
 
+    /**
+     * Метод для отслеживания события отключения пользователя
+     * @param event Событие, возникающее при закрытии сеанса клиента WebSocket
+     */
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());

@@ -7,20 +7,36 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+/**
+ * Класс модели представления для пользователя
+ * @author Бирюкова Екатерина
+ */
 @Entity
 @Getter
 @Setter
 @Table(name = "users")
 public class UserModel implements UserDetails {
+    /**
+     * Идентификатор пользователя
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    /**
+     * Имя пользователя
+     */
     @Column(name="username")
     String username;
+    /**
+     * Пароль пользователя
+     */
     @Column(name="password")
     String password;
 
+    /**
+     * Переопределенный метод для представления полномочий объекту аутентификации
+     * @return Представление полномочий или null
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

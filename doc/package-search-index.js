@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.mirea.chat"},{"l":"ru.mirea.chat.config"},{"l":"ru.mirea.chat.controller"},{"l":"ru.mirea.chat.eventlistener"},{"l":"ru.mirea.chat.model"},{"l":"ru.mirea.chat.repository"},{"l":"ru.mirea.chat.service"}];updateSearchResults();

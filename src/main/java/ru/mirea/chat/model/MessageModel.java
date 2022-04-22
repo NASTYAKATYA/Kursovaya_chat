@@ -4,11 +4,31 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 @RequiredArgsConstructor
+/**
+ * Класс модели представления для сообщения
+ * @author Бирюкова Екатерина
+ */
 public class MessageModel {
+    /**
+     * Тип сообщения
+     */
     private MessageType type;
+    /**
+     * Содержание сообщения
+     */
     private String content;
+    /**
+     * Имя отправителя
+     */
     private String username;
+    /**
+     * Дата и время отправки сообщения
+     */
     private Date date;
+
+    /**
+     * Перечисление возможных типов сообщения
+     */
     public enum MessageType {
         CHAT, JOIN, LEAVE
     }
