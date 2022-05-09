@@ -9,7 +9,7 @@
 <div class="main-container">
     <form method="POST">
         <input type="text" name="username" placeholder="Имя пользователя" class="text-box">
-        <input type="text" name="password" placeholder="Пароль" class="text-box">
+        <input type="password" name="password" placeholder="Пароль" class="text-box">
         <input type="submit" value="Войти" class="input-button">
         <a href="/signup">Перейти на страницу регистрации</a>
         <div class="error" th:if="${status} == 'wrong_login_or_password'">Неправильный логин или пароль</div>

@@ -5,6 +5,14 @@ var chatUl = document.querySelector('#chat');
 var stompClient = null;
 var username = null;
 
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 function connect() {
     username = document.querySelector('#username').innerText.trim();
@@ -15,10 +23,12 @@ function connect() {
 connect();
 
 function onConnected() {
-    stompClient.subscribe('/topic/chat', onMessageReceived);
+    stompClient.subscribe('/topic/chat/' + getParameterByName('chatId'), onMessageReceived);
+    var headers = {};
+    headers['chatId'] = getParameterByName('chatId');
     stompClient.send("/app/chat.addUser",
-        {},
-        JSON.stringify({username: username, type: 'JOIN'})
+        headers,
+        JSON.stringify({username: username, type: 'JOIN', chatId: getParameterByName('chatId')})
     )
     statusElement.classList.add('dnone');
 }
@@ -34,7 +44,8 @@ function sendMessage(event) {
         var chatMessage = {
             username: username,
             content: messageInput.value,
-            type: 'CHAT'
+            type: 'CHAT',
+            chatId: getParameterByName('chatId')
         };
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';

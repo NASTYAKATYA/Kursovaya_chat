@@ -39,14 +39,16 @@ public class WebSocketEventListener {
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
+        var stompSessionId = headerAccessor.getSessionId();
+        var chatId = ChatUsersCount.getChatIdByStompSessionId(stompSessionId);
         if(username != null) {
-            ChatUsersCount.removeUser(username);
-            if (!ChatUsersCount.userExists(username)) {
+            ChatUsersCount.removeUser(stompSessionId);
+            if (!ChatUsersCount.userExists(username, chatId)) {
                 MessageModel messageModel = new MessageModel();
                 messageModel.setType(MessageModel.MessageType.LEAVE);
                 messageModel.setUsername(username);
                 messageModel.setDate(new Date());
-                messagingTemplate.convertAndSend("/topic/chat", messageModel);
+                messagingTemplate.convertAndSend("/topic/chat/" + chatId, messageModel);
             }
         }
     }

@@ -27,6 +27,11 @@ public class MessageModel {
     private Date date;
 
     /**
+     * Идентификатор чата
+     */
+    private Integer chatId;
+
+    /**
      * Перечисление возможных типов сообщения
      */
     public enum MessageType {
@@ -55,5 +60,11 @@ public class MessageModel {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+    public Integer getChatId() {
+        return chatId;
+    }
+    public void setChatId(Integer chatId) {
+        this.chatId = chatId;
     }
 }

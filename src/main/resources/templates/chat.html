@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
@@ -14,9 +14,10 @@
     <div class="chat-container">
         <div class="header">
             <h2 style="float: right" id="status">Подключение...</h2>
-            <h2 style="float: left">Имя пользователя: <span id="username" th:text="${username}">username</span></h2>
+            <h2 style="float: left"><span id="chatname" th:text="${chatname}"></span></h2>
+            <h2 style="float: left" hidden><span id="username" th:text="${username}"></span></h2>
             <div class="clearfix"></div>
-            <a id="logout" href="/logout">Выйти</a>
+            <a id="logout" href="/">Выйти</a>
         </div>
         <ul id="chat">
         </ul>

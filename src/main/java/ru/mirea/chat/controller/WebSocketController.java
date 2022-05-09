@@ -39,7 +39,7 @@ public class WebSocketController {
     @MessageMapping("/chat.sendMessage")
     public void sendMessage(@Payload MessageModel messageModel) {
         messageModel.setDate(new Date());
-        messagingTemplate.convertAndSend("/topic/chat", messageModel);
+        messagingTemplate.convertAndSend("/topic/chat/" + messageModel.getChatId(), messageModel);
     }
 
     /**
@@ -50,11 +50,14 @@ public class WebSocketController {
     @MessageMapping("/chat.addUser")
     public void addUser(@Payload MessageModel messageModel, SimpMessageHeaderAccessor headerAccessor) {
         headerAccessor.getSessionAttributes().put("username", messageModel.getUsername());
+        var username = messageModel.getUsername();
+        var chatId = messageModel.getChatId();
+        var stompSessionId = headerAccessor.getSessionId();
         messageModel.setDate(new Date());
-        if (!ChatUsersCount.userExists(messageModel.getUsername())) {
+        if (!ChatUsersCount.userExists(username, chatId)) {
             sendAddUser(messageModel);
         }
-        ChatUsersCount.addUser(messageModel.getUsername());
+        ChatUsersCount.addUser(username, stompSessionId, chatId);
     }
 
     /**
@@ -62,6 +65,6 @@ public class WebSocketController {
      * @param messageModel Модель сообщения
      */
     public void sendAddUser(@Payload MessageModel messageModel) {
-        messagingTemplate.convertAndSend("/topic/chat", messageModel);
+        messagingTemplate.convertAndSend("/topic/chat/" + messageModel.getChatId(), messageModel);
     }
 }

@@ -9,7 +9,7 @@
 <div class="main-container">
     <form method="POST">
         <input type="text" name="username" placeholder="Имя пользователя" class="text-box">
-        <input type="text" name="password" placeholder="Пароль" class="text-box">
+        <input type="password" name="password" placeholder="Пароль" class="text-box">
         <input type="submit" value="Зарегистрироваться" class="input-button">
         <a href="/login">Перейти на страницу входа</a>
         <div class="error" th:if="${status} == 'user_exists'">Пользователь с таким именем пользователя уже существует.</div>

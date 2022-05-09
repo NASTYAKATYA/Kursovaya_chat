@@ -160,3 +160,31 @@ h2,h3{
     display:inline-block;
     cursor: pointer;
 }
+
+.send-message input:active{
+    color: #0d6efd;
+}
+
+.send-message input:hover{
+    color: #0d6efd;
+}
+
+.create-btn {
+    text-decoration:none;
+    border-style: none;
+    text-transform:uppercase;
+    font-weight:bold;
+    color:#6fbced;
+    vertical-align:top;
+    margin-left:585px;
+    margin-top:5px;
+    display:inline-block;
+    cursor: pointer;
+}
+.create-btn:active{
+    color: #0d6efd;
+}
+
+.create-btn:hover{
+    color: #0d6efd;
+}

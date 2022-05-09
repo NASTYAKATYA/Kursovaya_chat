@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Чат</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
+    <script th:src="@{js/bootstrap.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eff3f7;">
+    <div class="container-fluid">
+        <span class="badge rounded-pill bg-primary">Чат</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:if="${userRole} == 'GUEST'" href="/login">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:if="${userRole} == 'GUEST'" href="/signup">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:if="${userRole} == 'USER'" href="/logout">Выход</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" id="searchInput" placeholder="Поиск" aria-label="Search">
+                <button class="create-btn btn btn-primary mb-3" type="button" id="searchButton">Поиск</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="content container padding-site">
+    <h4>Создать новый чат</h4>
+    <form th:method="POST" th:action="@{/create}">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Название*</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Описание</label>
+            <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Описание" name="description">
+        </div>
+        <div class="col-auto" style="padding: 0.25rem">
+            <button type="submit" class="create-btn btn btn-primary mb-3">Создать</button>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Название чата</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Создатель</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="chat: ${chats}" th:method="POST">
+                <td th:text="${chat.getName()}"></td>
+                <td th:text="${chat.getDescription()}"></td>
+                <td th:text="${chat.getCreator()}"></td>
+                <td th:if="${chats.size()}>0">
+                    <form>
+                        <button th:href="@{/chat(chatId=${chat.getId()})}" type="submit" class="create-btn btn btn-primary mb-3">Войти в чат</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:method="POST" th:action="@{/delete}">
+                        <input type="hidden" name="id" th:value="${chat.getId()}">
+                        <button type="submit" class="create-btn btn btn-primary mb-3">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<script th:src="@{js/fuze.min.js}"></script>
+<script th:src="@{js/search.js}"></script>
+</body>
+</html>

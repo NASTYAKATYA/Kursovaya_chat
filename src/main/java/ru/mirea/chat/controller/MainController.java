@@ -7,7 +7,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.mirea.chat.model.ChatModel;
 import ru.mirea.chat.model.UserModel;
+import ru.mirea.chat.service.ChatService;
 import ru.mirea.chat.service.UserService;
 
 import javax.servlet.ServletException;
@@ -25,6 +27,7 @@ public class MainController {
      * Класс-сервис для передачи данных из таблицы БД с пользователями в контроллер
      */
     private final UserService userService;
+    private final ChatService chatService;
 
     /**
      *
@@ -33,10 +36,17 @@ public class MainController {
      */
 
     @Autowired
-    public MainController(UserService userService) {
+    public MainController(UserService userService, ChatService chatService) {
         this.userService = userService;
+        this.chatService = chatService;
     }
 
+    private String getUserRole(Authentication authentication) {
+        if (authentication == null)
+            return "GUEST";
+        else
+            return "USER";
+    }
     /**
      * Метод, принимающий GET запросы /
      * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
@@ -48,8 +58,11 @@ public class MainController {
     public String index(Authentication authentication, Model model) {
         if (authentication == null)
             return "redirect:/login";
+        String userRole = getUserRole(authentication);
+        model.addAttribute("userRole", userRole);
         model.addAttribute("username", authentication.getName());
-        return "chat";
+        model.addAttribute("chats", chatService.getAllChats());
+        return "index";
     }
 
     /**
@@ -132,4 +145,40 @@ public class MainController {
             request.login(username, password);
         } catch (ServletException e) { }
     }
+    @PostMapping("/create")
+    public String chatsCreate(@RequestParam(name = "name") String name,
+                              @RequestParam(name = "description") String description,
+                              Authentication authentication, Model model){
+        model.addAttribute("username", authentication.getName());
+        ChatModel newChat = new ChatModel();
+        newChat.setName(name);
+        newChat.setDescription(description);
+        newChat.setCreator(authentication.getName());
+        chatService.saveChat(newChat);
+        model.addAttribute("Id", newChat.getId());
+
+        return "redirect:/chat?chatId="+newChat.getId();
+    }
+
+    @GetMapping("/search")
+    public String searchChat(@RequestParam(name = "name") String name,
+                             Model model, Authentication authentication){
+        return "index";
+    }
+    @GetMapping("/chat")
+    public String chat(@RequestParam(name = "chatId") int id,
+                       Model model, Authentication authentication){
+        ChatModel chatModel = chatService.getChatById(id);
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("chatname", chatModel.getName());
+        model.addAttribute("chat", chatModel);
+        return "chat";
+    }
+    @PostMapping("/delete")
+    private  String deleteChat(@RequestParam(name ="id")int id,
+                               Model model, Authentication authentication){
+        chatService.deleteById(id);
+        return "redirect:/index";
+    }
+
 }
