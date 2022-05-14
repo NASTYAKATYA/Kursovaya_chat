@@ -68,7 +68,7 @@
                         <button th:href="@{/chat(chatId=${chat.getId()})}" type="submit" class="create-btn btn btn-primary mb-3">Войти в чат</button>
                     </form>
                 </td>
-                <td>
+                <td th:if="${chat.getCreator()==username}">
                     <form th:method="POST" th:action="@{/delete}">
                         <input type="hidden" name="id" th:value="${chat.getId()}">
                         <button type="submit" class="create-btn btn btn-primary mb-3">Удалить</button>

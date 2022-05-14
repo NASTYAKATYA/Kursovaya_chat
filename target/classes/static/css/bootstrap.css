@@ -4834,16 +4834,13 @@ textarea.form-control-lg {
 }
 
 .badge {
-  text-shadow: 1px 0 1px #000,
-  0 1px 1px #000,
-  -1px 0 1px #000,
-  0 -1px 1px #000;
+  text-shadow: -1px 0 1px white, 0 -1px 1px white, 0 1px 1px white, 1px 0 1px white, 0 0 8px white, 0 0 8px white, 0 0 8px white, 2px 2px 3px black;
   display: inline-block;
   padding: 0.35em 0.65em;
   font-size: 1.75em;
   font-weight: 700;
   line-height: 1;
-  color: #fff;
+  color: #6fbced;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -7760,7 +7757,7 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  --bs-bg-opacity: 1;
+
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
