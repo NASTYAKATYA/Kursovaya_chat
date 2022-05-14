@@ -65,7 +65,7 @@
                 <td th:text="${chat.getCreator()}"></td>
                 <td th:if="${chats.size()}>0">
                     <form>
-                        <button th:href="@{/chat(chatId=${chat.getId()})}" type="submit" class="create-btn btn btn-primary mb-3">Войти в чат</button>
+                        <a th:href="@{/chat(chatId=${chat.getId()})}" class="create-btn btn btn-primary mb-3">Войти в чат</a>
                     </form>
                 </td>
                 <td th:if="${chat.getCreator()==username}">

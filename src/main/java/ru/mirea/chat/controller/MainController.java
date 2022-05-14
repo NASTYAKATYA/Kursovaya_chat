@@ -178,7 +178,7 @@ public class MainController {
     private  String deleteChat(@RequestParam(name ="id")int id,
                                Model model, Authentication authentication){
         chatService.deleteById(id);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 }
