@@ -1,0 +1,16 @@
+ru\mirea\chat\config\WebSocketConfig.class
+ru\mirea\chat\model\ChatModel.class
+ru\mirea\chat\config\ChatUsersCount$ChatUser.class
+ru\mirea\chat\model\UserModel.class
+ru\mirea\chat\eventlistener\WebSocketEventListener.class
+ru\mirea\chat\service\ChatService.class
+ru\mirea\chat\repository\IChatRepository.class
+ru\mirea\chat\repository\IUserRepository.class
+ru\mirea\chat\controller\MainController.class
+ru\mirea\chat\config\ChatUsersCount.class
+ru\mirea\chat\model\MessageModel$MessageType.class
+ru\mirea\chat\ChatApplication.class
+ru\mirea\chat\controller\WebSocketController.class
+ru\mirea\chat\model\MessageModel.class
+ru\mirea\chat\config\SpringSecurityConfig.class
+ru\mirea\chat\service\UserService.class

@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS chats
     id SERIAL PRIMARY KEY,
     name text not null,
     description text,
-    creator text not null
+    creator TEXT NOT NULL
 );
