@@ -19,3 +19,15 @@ d
 4src/main/java/ru/mirea/chat/service/ChatService.java,8\0\80174871d50fdcc1098935d1cc0d71e712ddc8af
 k
 ;src/main/java/ru/mirea/chat/repository/IChatRepository.java,8\b\8bb6df704dab838e7953e7fd32dd358b77d581aa
+l
+<src/main/java/ru/mirea/chat/config/SpringSecurityConfig.java,f\e\feb589553ba84f61f64a71c36a41890f40db432e
+j
+:src/main/java/ru/mirea/chat/controller/MainController.java,2\a\2aa264a5c7ccfaec36c50049187c143d54765ea9
+o
+?src/main/java/ru/mirea/chat/controller/WebSocketController.java,9\0\90be9a02a37d85d488c2e6ea6572e36c38483f4d
+u
+Esrc/main/java/ru/mirea/chat/eventlistener/WebSocketEventListener.java,f\9\f9dca57cdfc3ec9d9c6aaa0411a0baad8a486a6d
+f
+6src/main/java/ru/mirea/chat/config/ChatUsersCount.java,7\a\7a9a55f52b6d0d933e414916c2f226e2cd109b92
+g
+7src/main/java/ru/mirea/chat/config/WebSocketConfig.java,1\f\1f64d5dd3c8ca9b756af6fcd27722ffec2c046b1
