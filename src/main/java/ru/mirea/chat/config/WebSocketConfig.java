@@ -5,6 +5,8 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration;
+
 /**
  * Класс-конфигурация позволяет настраивать параметры WebSocket путем переопределения методов
  * @author Бирюкова Екатерина
@@ -29,5 +31,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.setApplicationDestinationPrefixes("/app");
         registry.enableSimpleBroker("/topic");
+    }
+    @Override
+    public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
+        registration.setMessageSizeLimit(5000000); // default : 64 * 1024
+        registration.setSendTimeLimit(30 * 10000); // default : 10 * 10000
+        registration.setSendBufferSizeLimit(5* 512 * 1024); // default : 512 * 1024
     }
 }

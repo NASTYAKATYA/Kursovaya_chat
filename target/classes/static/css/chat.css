@@ -5,6 +5,7 @@
     display: none;
 }
 body{
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z' fill='%23456789' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E");
     background-color:#abd9e9;
     font-family:Arial;
 }
@@ -18,7 +19,7 @@ h2,h3{
 }
 .main-container{
     width:750px;
-    height:800px;
+    height:825px;
     background:#eff3f7;
     margin:0 auto;
     font-size:0;
@@ -149,6 +150,7 @@ h2,h3{
     color:#ddd;
 }
 .send-message input{
+    background: transparent;
     text-decoration:none;
     border-style: none;
     text-transform:uppercase;
@@ -187,4 +189,25 @@ h2,h3{
 
 .create-btn:hover{
     color: #0d6efd;
+}
+
+#files{
+    color: gray;
+    font-size: 10px;
+    height: 55px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.delete-file-button{
+    cursor: pointer;
+    border: 0px solid #3498db;
+    background-color: transparent;
+}
+.error{
+    font-family:Consolas;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    width: 350px;
+    word-wrap: break-word;
 }

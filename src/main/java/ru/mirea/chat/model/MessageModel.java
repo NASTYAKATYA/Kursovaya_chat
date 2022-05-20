@@ -14,9 +14,13 @@ public class MessageModel {
      */
     private MessageType type;
     /**
-     * Содержание сообщения
+     * Содержание сообщения / файла
      */
     private String content;
+    /**
+     * Название файла
+     */
+    private String filename;
     /**
      * Имя отправителя
      */
@@ -35,7 +39,7 @@ public class MessageModel {
      * Перечисление возможных типов сообщения
      */
     public enum MessageType {
-        CHAT, JOIN, LEAVE
+        CHAT, JOIN, LEAVE, FILE
     }
     public MessageType getType() {
         return type;
@@ -66,5 +70,11 @@ public class MessageModel {
     }
     public void setChatId(Integer chatId) {
         this.chatId = chatId;
+    }
+    public String getFilename() {
+        return filename;
+    }
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

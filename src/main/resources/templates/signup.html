@@ -8,11 +8,13 @@
 <body>
 <div class="main-container">
     <form method="POST">
-        <input type="text" name="username" placeholder="Имя пользователя" class="text-box">
-        <input type="password" name="password" placeholder="Пароль" class="text-box">
+        <input type="text" name="username" placeholder="Имя пользователя" class="text-box" minlength="3" maxlength="15">
+        <input type="password" name="password" placeholder="Пароль" class="text-box" minlength="3" maxlength="15">
         <input type="submit" value="Зарегистрироваться" class="input-button">
         <a href="/login">Перейти на страницу входа</a>
         <div class="error" th:if="${status} == 'user_exists'">Пользователь с таким именем пользователя уже существует</div>
+        <div class="error" th:if="${status} == 'username_error'">Некорректное имя пользователя</div>
+        <div class="error" th:if="${status} == 'password_error'">Некорректный пароль</div>
     </form>
 </div>
 </body>

@@ -124,6 +124,14 @@ public class MainController {
      */
     @PostMapping("/signup")
     public String createUser(HttpServletRequest request, @RequestParam String username, @RequestParam String password, Model model) {
+        if (password == null || password.length() < 3 || password.length() > 15) {
+            model.addAttribute("status", "password_error");
+            return "signup";
+        }
+        if (username == null || username.length() < 3 || username.length() > 15) {
+            model.addAttribute("status", "username_error");
+            return "signup";
+        }
         if (userService.loadUserByUsername(username) != null) {
             model.addAttribute("status", "user_exists");
             return "signup";
@@ -149,6 +157,14 @@ public class MainController {
     public String chatsCreate(@RequestParam(name = "name") String name,
                               @RequestParam(name = "description") String description,
                               Authentication authentication, Model model){
+        if (name == null || name.length() < 3 || name.length() > 15) {
+            String userRole = getUserRole(authentication);
+            model.addAttribute("userRole", userRole);
+            model.addAttribute("username", authentication.getName());
+            model.addAttribute("chats", chatService.getAllChats());
+            model.addAttribute("status", "name_error");
+            return "index";
+        }
         model.addAttribute("username", authentication.getName());
         ChatModel newChat = new ChatModel();
         newChat.setName(name);

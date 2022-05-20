@@ -38,7 +38,7 @@
     <form th:method="POST" th:action="@{/create}">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Название*</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название" name="name" required>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название" name="name" minlength="3" maxlength="15" required>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Описание</label>
@@ -47,7 +47,11 @@
         <div class="col-auto" style="padding: 0.25rem">
             <button type="submit" class="create-btn btn btn-primary mb-3">Создать</button>
         </div>
+        <div class="error" th:if="${status} == 'name_error'">Некорректное название для чата</div>
     </form>
+</div>
+<div th:if="${chats.size()}>0" class="content container padding-site">
+
     <table class="table">
         <thead>
         <tr>
@@ -63,7 +67,7 @@
                 <td th:text="${chat.getName()}"></td>
                 <td th:text="${chat.getDescription()}"></td>
                 <td th:text="${chat.getCreator()}"></td>
-                <td th:if="${chats.size()}>0">
+                <td>
                     <form>
                         <a th:href="@{/chat(chatId=${chat.getId()})}" class="create-btn btn btn-primary mb-3">Войти в чат</a>
                     </form>
