@@ -1,0 +1,63 @@
+.main_block {
+    margin-left: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.row-end {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.block1 {
+    height: content-box;
+    flex-shrink: 0;
+    text-align: justify;
+    padding: 10px;
+}
+
+.add-card {
+    text-align: center;
+    align: center;
+    justify-content: center;
+}
+
+svg {
+    color: gray;
+}
+
+.stickerId{
+}
+
+.sticker {
+    width: 100px;
+    height: 100px;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}

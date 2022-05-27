@@ -8,6 +8,29 @@ inputElement.addEventListener("change", handleFiles, false);
 var stompClient = null;
 var username = null;
 
+var stickerBtn = document.querySelector('#stickerBtn');
+var stickerPack = document.querySelector('#stickerPack');
+var btnClicked = false;
+
+const els = document.getElementsByClassName('stickerId');
+
+for(let i = 0 ; i < els.length; i++){
+    function sendSticker(event) {
+        var stickerId = els[i].value.trim();
+        if(stickerId && stompClient) {
+            var chatMessage = {
+                username: username,
+                sticker: stickerId,
+                type: 'CHAT',
+                chatId: getParameterByName('chatId')
+            };
+            stompClient.send("/app/chat.sticker", {}, JSON.stringify(chatMessage));
+        }
+        event.preventDefault();
+    }
+    els[i].addEventListener("click", sendSticker, false);
+}
+
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -205,6 +228,11 @@ function onMessageReceived(payload) {
             triangleElement.classList.add('transparent-dark-blue');
             contentElement.classList.add('dark-blue');
         }
+        if (message.sticker !== null) {
+            var newSticker = document.createElement('img');
+            newSticker.classList.add("sticker");
+            newSticker.src = '/stickerpack/' + message.sticker + '.png';
+        }
     }
     var messageTime  = new Date(message.date);
     var timeOptions = { hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'long', day: 'numeric' };
@@ -231,9 +259,31 @@ function onMessageReceived(payload) {
         infoElement.appendChild(infoElementTime);
     }
     messageElement.appendChild(infoElement);
-    messageElement.appendChild(triangleElement);
-    messageElement.appendChild(contentElement);
+    if (message.content !== null) {
+        messageElement.appendChild(triangleElement);
+        messageElement.appendChild(contentElement);
+    }
+    if (message.sticker !== null) {
+        messageElement.appendChild(newSticker);
+    }
     chatUl.appendChild(messageElement);
+}
+function showStickers(event) {
+    btnClicked = !btnClicked;
+    if (btnClicked) {
+        stickerPack.classList.remove("dnone");
+        stickerPack.classList.add("dflex");
+        messageInput.style.cssText = 'display: none;';
+        chatUl.classList.add("smallheight");
+        chatUl.classList.remove("bigheight");
+    } else {
+        stickerPack.classList.remove("dflex");
+        stickerPack.classList.add("dnone");
+        messageInput.style.cssText = '';
+        chatUl.classList.add("bigheight");
+        chatUl.classList.remove("smallheight");
+    }
 }
 
 sendMessageForm.addEventListener('submit', sendMessage, true);
+stickerBtn.addEventListener('click', showStickers, true); 

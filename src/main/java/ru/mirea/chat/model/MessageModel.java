@@ -1,9 +1,13 @@
 package ru.mirea.chat.model;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 @RequiredArgsConstructor
+@Getter
+@Setter
 /**
  * Класс модели представления для сообщения
  * @author Бирюкова Екатерина
@@ -34,6 +38,10 @@ public class MessageModel {
      * Идентификатор чата
      */
     private Integer chatId;
+    /**
+     * Идентификатор стикера
+     */
+    private Integer sticker;
 
     /**
      * Перечисление возможных типов сообщения

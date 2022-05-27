@@ -1,13 +1,17 @@
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\config\ChatUsersCount.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\repository\IUserRepository.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\eventlistener\WebSocketEventListener.java
+C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\service\StickerService.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\service\ChatService.java
+C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\model\StickerEnum.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\model\ChatModel.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\controller\WebSocketController.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\service\UserService.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\model\MessageModel.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\config\SpringSecurityConfig.java
+C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\repository\IStickerRepository.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\config\WebSocketConfig.java
+C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\model\StickerModel.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\repository\IChatRepository.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\ChatApplication.java
 C:\Users\User\IdeaProjects\Kursovaya_chat\src\main\java\ru\mirea\chat\controller\MainController.java

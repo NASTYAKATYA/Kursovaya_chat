@@ -1,0 +1,7 @@
+
+x
+java:S4144U"[Update this method so that its implementation is not identical to "sendMessage" on line 50.(ÄñÐò8‘Ûç²0
+o
+java:S11924"MDefine a constant instead of duplicating this literal "/topic/chat/" 4 times.(…ôáºüÿÿÿÿ8œÛç²0
+n
+java:S2259>"SA "NullPointerException" could be thrown; "getSessionAttributes()" can return null.(­ßìÝûÿÿÿÿ

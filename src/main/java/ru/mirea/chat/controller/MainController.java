@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ru.mirea.chat.service.StickerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,18 +32,24 @@ public class MainController {
      * Класс-сервис для передачи данных из таблицы БД с чатами в контроллер
      */
     private final ChatService chatService;
+    /**
+     * Класс-сервис для передачи данных о стикерах в контроллер
+     */
+    private final StickerService stickerService;
 
     /**
      *
      * Конструктор для основного контроллера
      * @param userService Сервис для пользователей
      * @param chatService Сервис для чатов
+     * @param stickerService Сервис для стикеров
      */
 
     @Autowired
-    public MainController(UserService userService, ChatService chatService) {
+    public MainController(UserService userService, ChatService chatService, StickerService stickerService) {
         this.userService = userService;
         this.chatService = chatService;
+        this.stickerService = stickerService;
     }
 
     /**
@@ -221,6 +228,7 @@ public class MainController {
         model.addAttribute("username", authentication.getName());
         model.addAttribute("chatname", chatModel.getName());
         model.addAttribute("chat", chatModel);
+        model.addAttribute("stickers", stickerService.getAllStickers());
         return "chat";
     }
 

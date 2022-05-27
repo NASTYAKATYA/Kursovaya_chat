@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sticker.css}">
     <title>Чат</title>
     <!-- https://cdnjs.com/libraries/sockjs-client -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
@@ -21,6 +22,17 @@
         </div>
         <ul id="chat">
         </ul>
+        <div id="stickerPack" class="dnone stickerpack">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6" th:each="sticker:${stickers}">
+                    <div class="block1 card">
+                        <button class="stickerId" th:id="'stickerButton' + ${sticker.getId()}" th:value="${sticker.getId()}">
+                            <img th:src="'/stickerpack/' + ${sticker.getId()} + '.png'" class="sticker" alt="sticker-img">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <form class="send-message" id="sendMessageForm">
             <textarea placeholder="Введите сообщение" id="messageInput" name="content"></textarea>
 
@@ -28,6 +40,16 @@
             <label for="fileElem"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
                 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
             </svg></label>
+            <button id="stickerBtn">
+                <svg width="17" height="17" class="bi" viewBox="0 0 24 24" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.44 14.3a.9.9 0 011.26.13c.01.02.2.22.53.43.38.24.97.49 1.77.49s1.39-.25 1.77-.49c.2-.12.39-.26.53-.43a.9.9 0 011.4 1.13c-.27.33-.61.6-.97.83a5.1 5.1 0 01-2.73.76 5.1 5.1 0 01-2.73-.76 3.99 3.99 0 01-.97-.83.9.9 0 01.14-1.26zm1.81-4.05a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM15 11.5A1.25 1.25 0 1015 9a1.25 1.25 0 000 2.5z"
+                          fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M12 2.1a9.9 9.9 0 100 19.8 9.9 9.9 0 000-19.8zM3.9 12a8.1 8.1 0 1116.2 0 8.1 8.1 0 01-16.2 0z"
+                          fill="currentColor"/>
+                </svg>
+            </button>
 
 
             <input type="submit"/>
