@@ -27,12 +27,16 @@ public class MainController {
      * Класс-сервис для передачи данных из таблицы БД с пользователями в контроллер
      */
     private final UserService userService;
+    /**
+     * Класс-сервис для передачи данных из таблицы БД с чатами в контроллер
+     */
     private final ChatService chatService;
 
     /**
      *
      * Конструктор для основного контроллера
      * @param userService Сервис для пользователей
+     * @param chatService Сервис для чатов
      */
 
     @Autowired
@@ -41,6 +45,11 @@ public class MainController {
         this.chatService = chatService;
     }
 
+    /**
+     * Метод для получения роли пользователя
+     * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
+     * @return Возвращает значение роли
+     */
     private String getUserRole(Authentication authentication) {
         if (authentication == null)
             return "GUEST";
@@ -153,6 +162,15 @@ public class MainController {
             request.login(username, password);
         } catch (ServletException e) { }
     }
+
+    /**
+     * Метод принимающий GET запросы /create для создания чата
+     * @param name Название чата
+     * @param description Описание чата
+     * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
+     * @param model Объект, предоставляющий атрибуты, используемые для визуализации представлений
+     * @return Возвращает главную страницу
+     */
     @PostMapping("/create")
     public String chatsCreate(@RequestParam(name = "name") String name,
                               @RequestParam(name = "description") String description,
@@ -176,11 +194,26 @@ public class MainController {
         return "redirect:/chat?chatId="+newChat.getId();
     }
 
+    /**
+     * Метод принимающий GET запросы /search для поиска чата по названию
+     * @param name Название чата
+     * @param model Объект, предоставляющий атрибуты, используемые для визуализации представлений
+     * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
+     * @return Возвращает главную страницу
+     */
     @GetMapping("/search")
     public String searchChat(@RequestParam(name = "name") String name,
                              Model model, Authentication authentication){
         return "index";
     }
+
+    /**
+     * Метод принимающий GET запросы /chat
+     * @param id Идентификатор чата
+     * @param model Объект, предоставляющий атрибуты, используемые для визуализации представлений
+     * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
+     * @return Возвращает страницу с чатом
+     */
     @GetMapping("/chat")
     public String chat(@RequestParam(name = "chatId") int id,
                        Model model, Authentication authentication){
@@ -190,6 +223,14 @@ public class MainController {
         model.addAttribute("chat", chatModel);
         return "chat";
     }
+
+    /**
+     * Метод принимающий POST запросы /delete для удаления чата
+     * @param id Идентификатор чата
+     * @param model Объект, предоставляющий атрибуты, используемые для визуализации представлений
+     * @param authentication Объект, идентифицирующий пользователя, обратившегося к методу
+     * @return Перенаправляет на главную страницу
+     */
     @PostMapping("/delete")
     private  String deleteChat(@RequestParam(name ="id")int id,
                                Model model, Authentication authentication){

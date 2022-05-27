@@ -1,20 +1,12 @@
 
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-k
-;src/main/java/ru/mirea/chat/repository/IUserRepository.java,0\6\0681ee225d6ba26812eafd5ebd2fb166b6c5373d
 d
 4src/main/java/ru/mirea/chat/service/UserService.java,0\5\05744f532b0b3f7a9b097ed1e14a0b7e7b357a92
 `
 0src/main/java/ru/mirea/chat/ChatApplication.java,8\c\8c8391edf8714dcc206363ea2604ab8bf02bdae8
 `
 0src/main/java/ru/mirea/chat/model/UserModel.java,8\2\82c95047e2f93fe7934a6c09da0539f0feb9074b
-k
-;src/main/java/ru/mirea/chat/repository/IChatRepository.java,8\b\8bb6df704dab838e7953e7fd32dd358b77d581aa
-l
-<src/main/java/ru/mirea/chat/config/SpringSecurityConfig.java,f\e\feb589553ba84f61f64a71c36a41890f40db432e
-f
-6src/main/java/ru/mirea/chat/config/ChatUsersCount.java,7\a\7a9a55f52b6d0d933e414916c2f226e2cd109b92
 8
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
 4
@@ -23,5 +15,3 @@ f
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 A
 system.properties,a\5\a5db35984da8ffa0e255c16a2e31ae7b26e7d222
-d
-4src/main/java/ru/mirea/chat/service/ChatService.java,8\0\80174871d50fdcc1098935d1cc0d71e712ddc8af

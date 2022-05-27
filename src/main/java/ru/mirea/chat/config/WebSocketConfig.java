@@ -32,6 +32,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.setApplicationDestinationPrefixes("/app");
         registry.enableSimpleBroker("/topic");
     }
+
+    /**
+     * Метод для настройки параметров, связанных с обработкой сообщений, полученных от клиентов WebSocket и отправленных им
+     * @param registration Объект для обработки сообщения
+     */
     @Override
     public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
         registration.setMessageSizeLimit(5000000); // default : 64 * 1024

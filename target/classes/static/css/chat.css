@@ -172,6 +172,7 @@ h2,h3{
 }
 
 .create-btn {
+    background: transparent;
     text-decoration:none;
     border-style: none;
     text-transform:uppercase;

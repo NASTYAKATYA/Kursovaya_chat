@@ -179,7 +179,7 @@ function onMessageReceived(payload) {
         else {
             messageElement.classList.add('other');
         }
-        message.content = 'Присоединился к чату.';
+        message.content = 'Присоединился к чату';
     } else if (message.type === 'LEAVE') {
         infoElementStatus.classList.add('orange');
         triangleElement.classList.add('transparent-orange');
@@ -191,7 +191,7 @@ function onMessageReceived(payload) {
         else {
             messageElement.classList.add('other');
         }
-        message.content = 'Отсоединился от чата.';
+        message.content = 'Отсоединился от чата';
     } else {
         if (message.username == username) {
             messageElement.classList.add('me');

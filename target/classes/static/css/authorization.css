@@ -55,6 +55,7 @@ form{
     color:#ddd;
 }
 .input-button{
+    background: transparent;
     text-decoration:none;
     text-transform:uppercase;
     font-weight:800;
@@ -62,6 +63,12 @@ form{
     display:inline-block;
     cursor: pointer;
     border-style: none;
+}
+.input-button:hover{
+    color: #0d6efd;
+}
+.input-button:active{
+    color: #0d6efd;
 }
 .error{
     font-family:Consolas;
